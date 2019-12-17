@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using NoticiasAPI.Services;
 
 namespace NoticiasAPI
 {
@@ -28,6 +29,7 @@ namespace NoticiasAPI
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<NoticiasDBContext>(opciones => opciones.UseSqlServer(Configuration.GetConnectionString("conexionNoticias")));
+            services.AddTransient<NoticiaService, NoticiaService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
