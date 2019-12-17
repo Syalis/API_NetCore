@@ -34,5 +34,42 @@ namespace NoticiasAPI.Services
                 return false;
             }
         }
+
+        public Boolean EditarNoticia (Noticia _noticia)
+        {
+            try
+            {
+                var noticiaBD = _noticiaDbContext.Noticia.Where(x => x.NoticiaID == _noticia.NoticiaID).FirstOrDefault();
+
+                noticiaBD.Titulo = _noticia.Titulo;
+                noticiaBD.Descripcion = _noticia.Descripcion;
+                noticiaBD.Contenido = _noticia.Contenido;
+                noticiaBD.Fecha = _noticia.Fecha;
+                noticiaBD.AutorID = _noticia.AutorID;
+
+                _noticiaDbContext.SaveChanges();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public Boolean EliminarNoticia(int NoticiaID)
+        {
+            try
+            {
+                var noticiaBD = _noticiaDbContext.Noticia.Where(x => x.NoticiaID == NoticiaID).FirstOrDefault();
+                _noticiaDbContext.Noticia.Remove(noticiaBD);
+                _noticiaDbContext.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
     }
 }
