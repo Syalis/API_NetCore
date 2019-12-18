@@ -71,5 +71,19 @@ namespace NoticiasAPI.Services
                 return false;
             }
         }
+
+        public List<Autor> ListadoAutores()
+        {
+            try
+            {
+                var resultado = _noticiaDbContext.Autor.ToList();
+                return resultado;
+            }
+            catch (Exception e)
+            {
+                return new List<Autor>();
+            }
+          
+        }
     }
 }

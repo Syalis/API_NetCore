@@ -72,5 +72,13 @@ namespace NoticiasAPI.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpGet]
+        [Route("listadoAutores")]
+        public IActionResult ListadoAutores()
+        {
+            var resultado = _noticiaService.ListadoAutores();
+            return Ok(resultado);
+        }
     }
 }
