@@ -19,7 +19,7 @@ namespace NoticiasAPI.Models
             {
                 mapeoAutor.HasKey(x => x.AutorID);
                 mapeoAutor.Property(x => x.Nombre).HasColumnName("Nombre");
-                mapeoAutor.ToTable("Noticia");
+                mapeoAutor.ToTable("Autor");
             }
         }
     }
